@@ -1,14 +1,16 @@
-// Mock data for featured products
+
+// Mock data for featured products - UPDATE IMAGE PATHS HERE
 const featuredProducts = [
-    { name: 'Woven Basket', price: 45.00, rating: 4.5, image: '' },
-    { name: 'Ceramic Mug', price: 22.00, rating: 5.0, image: '' },
-    { name: 'Leather Wallet', price: 60.00, rating: 4.2, image: '' },
-    { name: 'Wool Blanket', price: 95.00, rating: 4.8, image: '' },
-    { name: 'Woven Basket', price: 45.00, rating: 4.5, image: '' },
-    { name: 'Ceramic Mug', price: 22.00, rating: 5.0, image: '' },
-    { name: 'Leather Wallet', price: 60.00, rating: 4.2, image: '' },
-    { name: 'Wool Blanket', price: 95.00, rating: 4.8, image: '' },
+    { name: 'Woven Basket', price: 45.00, rating: 4.5, image: '/images/products/basket.webp' },
+    { name: 'Ceramic Mug', price: 22.00, rating: 5.0, image: '/images/products/mug.webp' },
+    { name: 'Leather Wallet', price: 60.00, rating: 4.2, image: '/images/products/wallet.webp' },
+    { name: 'Wool Blanket', price: 95.00, rating: 4.8, image: '/images/products/blanket.webp' },   
+    { name: 'Hand-dyed Scarf', price: 35.00, rating: 4.0, image: '/images/products/scarf.webp' },
+    { name: 'Wooden Coaster Set', price: 28.00, rating: 4.7, image: '/images/products/coaster.webp' },
+    { name: 'Terracotta Planter', price: 55.00, rating: 4.9, image: '/images/products/planter.webp' },
+    { name: 'Embroidered Cushion', price: 40.00, rating: 4.3, image: '/images/products/cushion.webp' },
 ];
+
 
 // Reusable Star Rating component (uses the Interactive/Success color: Mustard #E7BB41)
 const StarRating = ({ rating }: { rating: number }) => {
@@ -65,9 +67,21 @@ export default async function Page() {
                     {featuredProducts.map((product, index) => (
                         <div key={index} className="flex-shrink-0 w-64 border border-gray-100 rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow bg-white">
                             {/* Product Image - High-resolution, consistent aspect ratio */}
-                            <div className="w-full h-48 bg-gray-200 flex items-center justify-center">
+                            {/* <div className="w-full h-48 bg-gray-200 flex items-center justify-center">
                                 {product.image}
-                            </div>
+                            </div> */}
+
+                            <div className="w-full h-48 bg-gray-200 flex items-center justify-center overflow-hidden">
+    {/* Use an <img> tag to display the image */}
+    <img 
+        src={product.image} 
+        alt={product.name} 
+        // These classes ensure the image covers the container nicely
+        className="w-full h-full object-cover"
+        loading="lazy"
+    />
+</div>
+
                             <div className="p-4">
                                 {/* Product Name (Serif) */}
                                 <h3 className="text-lg font-serif text-[#2C3E50] mb-1 truncate" style={{ fontFamily: 'var(--font-heading)' }}>
